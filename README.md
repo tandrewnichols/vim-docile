@@ -72,7 +72,7 @@ vim, but as you can see, it doesn't align successive lines with the initial
 paragraph column because of the function name on the left.
 ```
 
-to this:
+into this:
 
 ```vim
 docile#foo()                    This descriptive paragraph will be wrapped by
