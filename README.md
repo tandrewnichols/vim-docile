@@ -111,7 +111,7 @@ Command: `:DocileAddHeader Version banana`
 Version                                          *pluginname-banana*
 ```
 
-### :DocileAddRef
+### :DocileAddRef {...refs}
 
 Like `:DocileAddHeader` but with only the help reference on the right. You can pass multiple headers here, for instance if you alias several commands to the same thing, e.g.:
 
