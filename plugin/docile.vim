@@ -13,8 +13,9 @@ for [option, default] in items({
   \   'color_column': 'red',
   \   'ref_column': 50,
   \   'use_plugin_ref': 1,
-  \   'add_header': "doh",
-  \   'add_ref': "dor"
+  \   'toggle_mapping': 'dot',
+  \   'help_guide_mapping': 'dog',
+  \   'format_mapping': 'do=',
   \   'add_header_mapping': 'doh',
   \   'add_ref_mapping': 'dor'
   \ })
