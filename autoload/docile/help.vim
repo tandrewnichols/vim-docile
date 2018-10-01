@@ -60,7 +60,7 @@ function! docile#help#addRef(...) abort
 endfunction
 
 function! docile#help#pad(str) abort
-  let num = 49 - len(a:str)
+  let num = g:docile_ref_column - 1 - len(a:str)
   return a:str . repeat(' ', num)
 endfunction
 

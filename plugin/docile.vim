@@ -11,7 +11,7 @@ endfunction
 " Set some defaults
 for [option, default] in items({
   \   'color_column': 'red',
-  \   'help_guide_mapping': "dog",
+  \   'ref_column': 50,
   \   'format_mapping': "do=",
   \   'add_header': "doh",
   \   'add_ref': "dor"
