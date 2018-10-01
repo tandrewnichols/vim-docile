@@ -15,6 +15,8 @@ for [option, default] in items({
   \   'format_mapping': "do=",
   \   'add_header': "doh",
   \   'add_ref': "dor"
+  \   'add_header_mapping': 'doh',
+  \   'add_ref_mapping': 'dor'
   \ })
   call s:Set(option, default)
 endfor

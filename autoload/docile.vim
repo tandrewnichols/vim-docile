@@ -9,8 +9,8 @@ function! docile#createCommands() abort
   call docile#map('toggle_mapping', ':call docile#help#toggleFiletype()<CR>')
   call docile#map('help_guide_mapping', ':call docile#help#toggleGuide()<CR>')
   call docile#map('format_mapping', ':call docile#help#realign()<CR>')
-  call docile#map('add_header', ':DocileAddHeader ')
-  call docile#map('add_ref', ':DocileAddRef ')
+  call docile#map('add_header_mapping', ':DocileAddHeader ')
+  call docile#map('add_ref_mapping', ':DocileAddRef ')
 endfunction
 
 function! docile#map(lhs, rhs) abort
