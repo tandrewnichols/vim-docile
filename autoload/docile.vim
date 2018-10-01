@@ -13,7 +13,7 @@ function! docile#createCommands() abort
   call docile#map('add_ref', ':DocileAddRef ')
 endfunction
 
-function docile#map(lhs, rhs) abort
+function! docile#map(lhs, rhs) abort
   let lhs = a:lhs
   let rhs = a:rhs
   if !empty(get(g:, "docile_" . lhs))
