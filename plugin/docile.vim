@@ -12,7 +12,7 @@ endfunction
 for [option, default] in items({
   \   'color_column': 'red',
   \   'ref_column': 50,
-  \   'format_mapping': "do=",
+  \   'use_plugin_ref': 1,
   \   'add_header': "doh",
   \   'add_ref': "dor"
   \   'add_header_mapping': 'doh',

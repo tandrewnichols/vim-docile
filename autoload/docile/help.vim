@@ -65,7 +65,12 @@ function! docile#help#pad(str) abort
 endfunction
 
 function! docile#help#makeRef(ref) abort
-  let ref = join([docile#help#prefix(), a:ref], '-')
+  if empty(g:docile_use_plugin_refs)
+    let ref = a:ref
+  else
+    let ref = join([docile#help#prefix(), a:ref], '-')
+  endif
+
   return join(["*", ref, "*"], '')
 endfunction
 
