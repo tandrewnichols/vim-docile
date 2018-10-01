@@ -10,7 +10,7 @@ endfunction
 
 " Set some defaults
 for [option, default] in items({
-  \   'toggle_mapping': "dot",
+  \   'color_column': 'red',
   \   'help_guide_mapping': "dog",
   \   'format_mapping': "do=",
   \   'add_header': "doh",
