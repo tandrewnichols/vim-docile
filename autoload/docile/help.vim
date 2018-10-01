@@ -33,10 +33,10 @@ function! docile#help#toggleGuide() abort
   endif
 endfunction
 
-function! docile#help#addHeader(...) abort
+function! docile#help#addHeader(bang, ...) abort
   let args = a:000
   if len(args) == 1
-    let header = toupper(args[0])
+    let header = bang ? toupper(args[0]) : args[0]
     let ref = tolower(args[0])
   else
     let header = toupper(args[0])

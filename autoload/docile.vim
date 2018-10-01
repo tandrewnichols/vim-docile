@@ -3,7 +3,7 @@ function! docile#createCommands() abort
   command! -buffer -nargs=0 DocileToggle call docile#help#toggleFiletype()
   command! -buffer -nargs=0 DocileHelpGuide call docile#help#toggleGuide()
   command! -buffer -nargs=0 DocileFormatParagraph call docile#help#realign()
-  command! -buffer -nargs=+ DocileAddHeader call docile#help#addHeader(<f-args>)
+  command! -buffer -nargs=+ -bang DocileAddHeader call docile#help#addHeader(<bang>0, <f-args>)
   command! -buffer -nargs=+ DocileAddRef call docile#help#addRef(<f-args>)
 
   call docile#map('toggle_mapping', ':call docile#help#toggleFiletype()<CR>')
