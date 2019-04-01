@@ -60,7 +60,7 @@ Change the filetype between `help` and `text`. Mapped by default to `dot` (doc t
 
 ### :DocileHelpGuide
 
-Toggle `colorcolumn` between 80 and off. By default, colorcolumn is set to `red`, but you can override that by setting `g:docile_color_column`. Mapped by default to `dog` (doc guide). Override this with `g;docile_help_guide_mapping`.
+Toggle `colorcolumn` between 80 and off. By default, colorcolumn is set to `red`, but you can override that by setting `g:docile_color_column`. Mapped by default to `dog` (doc guide). Override this with `g:docile_help_guide_mapping`.
 
 ### :DocileFormatParagraph
 
