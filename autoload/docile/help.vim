@@ -12,12 +12,22 @@ function! docile#help#realign() abort
   let pos = getpos('.')
   normal! {j
   let line = getline('.')
+
+  " If the 'paragraph' contains standalone right justified
+  " help reference, ignore that line.
+  if line !~ '[^ ]\+\s\+[^ ]'
+    normal! j
+    let line = getline('.')
+  endif
+
   if line =~ '\s\+'
     let num = matchstrpos(line, '[^ ]\+\s\+\zs[^\s]')
     normal! j
     exec "normal!" num[1] . "i "
 
-    while len(getline('.')) > 80
+    let formatline = substitute(getline('.'), '^\s\+', '', '')
+
+    while len(formatline) > 80
       normal! gq$J
     endwhile
 
@@ -36,7 +46,7 @@ endfunction
 function! docile#help#addHeader(bang, ...) abort
   let args = a:000
   if len(args) == 1
-    let header = bang ? toupper(args[0]) : args[0]
+    let header = a:bang ? toupper(args[0]) : args[0]
     let ref = tolower(args[0])
   else
     let header = toupper(args[0])

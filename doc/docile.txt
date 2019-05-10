@@ -1,0 +1,192 @@
+*docile.txt* Get help writing your help
+
+INTRODUCTION                                     *docile*
+
+Make it less painful to write help docs for your vim plugin.
+
+CONTENTS                                         *docile-contents*
+
+  1.  Overview                                   |docile-overview|
+  2.  Requirements                               |docile-requirements|
+  3.  Installation                               |docile-installation|
+  4.  Usage                                      |docile-usage|
+  5.  Commands                                   |docile-commands|
+  6.  Functions                                  |docile-functions|
+  7.  Mappings                                   |docile-mappings|
+  8.  Options                                    |docile-options|
+  9.  Issues                                     |docile-issues|
+  10.  Contributing                              |docile-contributing|
+  11.  Version                                   |docile-version|
+  12.  License                                   |docile-license|
+
+OVERVIEW                                         *docile-overview*
+
+Most agree that documentation is the worst part of building any tool. In vim,
+it's especially tedious because of the community accepted formatting standards
+(things like textwidth, concealed characters, correctly linking to existing
+help entries, etc.). I got tired of all that, so I wrote some simple tools to
+make it simpler. There's quick toggling between `help` and `text` filetypes to
+reveal concealed characters, paragraph alignment, quick `colorcolumn`
+toggling, and the ability to add new headers and help references. For
+reference, I also use vim-projectionist to scaffold my main help file quickly.
+
+REQUIREMENTS                                     *docile-requirements*
+
+Vim 7.0 or greater.
+
+INSTALLATION                                     *docile-installation*
+
+  1. Manual
+
+     Clone this repository and copy the files in plugin/, autoload/, and doc/
+     to their respective directories in your vimfiles, or copy the text from
+     the github repository into new files in those directories. Make sure to
+     run `:helptags`.
+
+  2. Plug <https://github.com/junegunn/vim-plug>
+
+     Add the following to your vimrc, or something sourced therein: >
+
+     Plug 'tandrewnichols/vim-docile'
+<
+     Then install via `:PlugInstall`
+
+  3. Vundle <https://github.com/gmarik/Vundle.vim>
+
+     Add the following to your vimrc, or something sourced therein: >
+
+     Plugin 'tandrewnichols/vim-docile'
+<
+     Then install via `:BundleInstall`
+
+  4. NeoBundle <https://github.com/Shougo/neobundle.vim>
+
+     Add the following to your vimrc, or something sourced therein: >
+
+     NeoBundle 'tandrewnichols/vim-docile'
+<
+     Then install via `:BundleInstall`
+
+  5. Pathogen <https://github.com/tpope/vim-pathogen> >
+
+     cd ~/.vim/bundle
+     git clone https://github.com/tandrewnichols/vim-docile.git
+<
+     Then run `:Helptags`
+
+USAGE                                            *docile-usage*
+
+This plugin adds some helpful commands for writing and formatting help files,
+as well as mappings to those functions. The mappings use the prefix `do` which
+is typically unused outside of diff files, but all the mappings are
+configurable (and can be turned off altogether) if you don't like that prefix.
+These commands and mappings are available in files with |filetype| `help` or `text`. 
+
+COMMANDS                                         *docile-commands*
+
+  `:DocileToggle`                                  *:DocileToggle*
+  Toggle the filetype between `help` and `text`, which makes it easier to see
+  concealed characters.
+
+  `:DocileHelpGuide`                               *:DocileHelpGuide*
+  Toggle |colorcolumn| on and off. By default, the column color is red, but you
+  can change it with |g:docile_color_column|.  
+
+  `:DocileFormatParagraph`                         *:DocileFormatParagraph*
+  Align right-justified pagraphs with left-justified headers. Like this one. To
+  be honest, this isn't as perfect as I'd like, especially if you change it
+  after the fact. Hopefully this will improve over time.
+
+  `:DocileAddHeader[!] {header} [ref]`             *:DocileAddHeader*
+  Add a header with text on the left and a vim help reference on the right. The
+  help reference will be auto prefixed with the basename of the help file plus
+  `-`. That is, if you're writing `banana.txt`, this will generate `*banana-[ref]*`.
+  You can turn off this behavior by setting |g:docile_use_plugin_refs| to `0`, in
+  which case [ref] will be used as provided.  If [ref] is not provided,
+  {header} will be lower-cased and used instead.  When `!` is provied, {header}
+  will be upper cased. By dfault, [ref] will be positioned in column, but this
+  is configurable via |g:docile_ref_column|. For example >
+
+    :DocileAddHeader! version
+<
+  will generate >
+
+  VERSION                                        *pluginname-version*
+<
+  `:DocileAddRef {...refs}`                        *:DocileAddRef*
+  Like `:DocileAddHeader` but with only the help reference on the right. You
+  can pass multiple {refs} here, for instance if you alias several commands to
+  the same things. For example >
+
+    :DocileAddRef :FooSplit :FooSp
+<
+  will generate >
+
+                                                 *pluginname-:FooSplit*
+                                                 *pluginname-:FooSp*
+<
+MAPPINGS                                         *docile-mappings*
+
+ Mapping     Description ~
+
+ dot         Execute |:DocileToggle|.
+
+ dog         Execute |:DocileHelpGuide|.
+
+ do=         Execute |:DocileFormatParagraph|.
+
+ doh         Populate the command line with |:DocileAddHeader|.
+
+ dor         Populate the command line with |:DocileAddRef|.
+
+OPTIONS                                          *docile-options*
+
+                                                 *g:docile_color_column*
+                                                 *g:docile_ref_column*
+                                                 *g:docile_use_plugin_refs*
+                                                 *g:docile_toggle_mapping*
+                                                 *g:docile_help_guide_mapping*
+                                                 *g:docile_format_mapping*
+                                                 *g:docile_add_header_mapping*
+                                                 *g:docile_add_ref_mapping*
+
+ISSUES                                           *docile-issues*
+
+If you experience issues using vim-docile, please report them at
+<https://github.com/tandrewnichols/vim-docile/issues>.
+
+CONTRIBUTING                                     *docile-contributing*
+
+I always try to be open to suggestions, but I do still have opinions about what
+this should and should not be so . . . it never hurts to ask before investing a
+lot of time on a patch.
+
+VERSION                                          *docile-version*
+
+Version 1.0.0
+
+LICENSE                                          *docile-license*
+
+The MIT License (MIT)
+
+Copyright (c) 2018 Andrew Nichols
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+vim:tw=78:ts=2:ft=help:norl:
