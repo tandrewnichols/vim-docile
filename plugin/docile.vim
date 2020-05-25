@@ -10,7 +10,6 @@ endfunction
 
 " Set some defaults
 for [option, default] in items({
-  \   'color_column': 'red',
   \   'ref_column': 50,
   \   'use_plugin_refs': 1,
   \   'toggle_mapping': 'dot',
