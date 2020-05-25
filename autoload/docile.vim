@@ -1,5 +1,7 @@
 function! docile#createCommands() abort
-  exec "hi ColorColumn ctermbg=" . g:docile_color_column
+  if exists('g:docile_color_column')
+    exec "hi ColorColumn ctermbg=" . g:docile_color_column
+  endif
   command! -buffer -nargs=0 DocileToggle call docile#help#toggleFiletype()
   command! -buffer -nargs=0 DocileHelpGuide call docile#help#toggleGuide()
   command! -buffer -nargs=0 DocileFormatParagraph call docile#help#realign()
